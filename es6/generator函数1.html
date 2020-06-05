@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // generator传参
+
+    // function *show(){
+    //     alert('aaa');
+    //     let cs = yield;
+    //     alert('bbb'+cs)
+    // }
+    // let test = show();
+    // test.next();
+    // setTimeout(()=>{
+    //     test.next('100')
+    // },2000)
+
+    // yield  只能传一个参数，要传多个参数可用对象
+
+    function *fuc (){
+        console.log('这是第一段文字')
+        let {a,b} = yield;
+        console.log('这是第二段文字，其中接收的参数的值为：'+a+b)
+    }
+    let test1 = fuc();
+    test1.next()
+    setTimeout(()=>{
+        test1.next({a:"张三",b:"18岁"})
+    },2000)
+</script>
+</html>

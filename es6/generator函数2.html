@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // generator返回值
+    function *show(){
+        alert('aaa');
+        yield 99;
+        alert('bbb')
+    }
+    let test = show();
+    let res1 = test.next();
+    console.log(res1);//{value: 99, done: false}
+    let res2 = test.next();
+    console.log(res2);//{value: undefined, done: true}
+</script>
+</html>

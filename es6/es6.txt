@@ -1,0 +1,33 @@
+1.变量/赋值
+    let 不能重复定义、变量、块级作用
+    const 不能重复定义、常量、块级作用域
+    解构赋值  左右两边的结构要一致，右边必须是合法的结构；必须定义和赋值同步完成   
+       
+2.函数
+    箭头函数 (a,b)=>{}
+    有且仅有一个参数时：()可以省略
+    如果函数里面只有一句话时且方法是return时，{}可以省略    
+    关于this：普通函数的this指向调用我的人，箭头函数this指向是根据他所处的环境，定义在哪个位置就指向哪里
+      
+3.数组/json
+    map 类似映射关系，一个对一个
+    reduce 把数组的值汇总最后出来一个结果
+    filter 过滤 返回满足条件的值
+    forEach 遍历 
+    Array.from 把类数组转换成数组进行操作
+    json简写  名字和值一样可以省略，function可以不写
+      
+4.字符串
+    字符串模板：`abc${变量}，cde`    ` 被称为反单引号
+    string.startsWith(searchvalue, start):用于检测字符串是否以指定的子字符串开始。如果是以指定的子字符串开头返回 true，否则 false。startsWith() 方法对大小写敏感。
+    searchvalue：必需，要查找的字符串;start:可选，查找的开始位置，默认为 0
+    var str = "Hello world, welcome to the Runoob.";
+    var n = str.startsWith("Hello");
+
+    string.endsWidth()
+
+5.面向对象
+    bind 给函数绑定一个this;
+    
+
+   

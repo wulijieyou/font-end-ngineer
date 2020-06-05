@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function Person (name,age){
+        this.name = name;
+        this.age = age;
+    };
+    Person.prototype.showName = function (){
+        console.log('我叫'+this.name);
+    };
+    Person.prototype.showAge = function (){
+        console.log('我今年'+this.age +'岁')
+    };
+    // let per = new Person('张三',20);
+    // per.showName();
+    // per.showAge();
+
+    //继承
+
+    function Worker (name,age,job){
+        Person.call(this,name,age);
+        this.job = job;
+    };
+    Worker.prototype = new Person;
+    Worker.prototype.constructor = Worker;
+    Worker.prototype.showJob = function (){
+        console.log('我是做'+this.job);
+    }
+    let W = new Worker('李四',18,'运动员');
+    W.showName();
+    W.showAge();
+    W.showJob();
+</script>
+</html>

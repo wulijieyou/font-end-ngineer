@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="height: 2000px;">
+    <div class="appTest ccc xxx">
+            文字文字
+        <div class="fff"></div>
+    </div>
+    <div id="backTop" style="position: fixed;top: 150px;left: 200px;">点击回到顶部</div>
+</body>
+<script>
+    class Person {
+        constructor(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        showName() {
+            console.log('我叫' + this.name);
+        }
+        showAge() {
+            console.log('我今年' + this.age + '岁')
+        }
+    }
+    let p = new Person('张三', 22);
+    // p.showName();
+    // p.showAge();
+
+    //===============es6继承===============
+    class Worker extends Person {
+        constructor(name, age, job) {
+            super(name, age);
+            this.job = job;
+        }
+        showJob() {
+            console.log('我是做' + this.job);
+        }
+    }
+    let w = new Worker('李四', 60, '乞丐');
+    w.showName();
+    w.showAge();
+    w.showJob();
+
+    class usualTools {
+        constructor() {
+
+        };
+        //邮箱验证
+        isEmail(s) {
+            return /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((.[a-zA-Z0-9_-]{2,3}){1,2})$/.test(s)
+        };
+        //验证手机号码
+        isMobile(s) {
+            return /^1[3456789]\d{9}$/.test(s)
+        };
+        //动态引入js
+        injectScript(src) {
+            const s = document.createElement('script');
+            s.type = 'text/javascript';
+            s.async = true;
+            s.src = src;
+            const t = document.getElementsByTagName('script')[0];
+            t.parentNode.insertBefore(s, t);
+        };
+        //获取url参数
+        getQueryString(name) {
+            const reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+            const search = window.location.search.split('?')[1] || '';
+            const r = search.match(reg) || [];
+            return r[2];
+        };
+        //根据url地址下载，方法待验证
+        urlDownload(url) {
+            var isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+            var isSafari = navigator.userAgent.toLowerCase().indexOf('safari') > -1;
+            if (isChrome || isSafari) {
+                var link = document.createElement('a');
+                link.href = url;
+                if (link.download !== undefined) {
+                    var fileName = url.substring(url.lastIndexOf('/') + 1, url.length);
+                    link.download = fileName;
+                }
+                if (document.createEvent) {
+                    var e = document.createEvent('MouseEvents');
+                    e.initEvent('click', true, true);
+                    link.dispatchEvent(e);
+                    return true;
+                }
+            }
+            if (url.indexOf('?') === -1) {
+                url += '?download';
+            }
+            window.open(url, '_self');
+            return true;
+        };
+        //验证是否是字符串
+        isString(o) {
+            return Object.prototype.toString.call(o).slice(8, -1) === 'String'
+        };
+        //el是否包含某个class
+        hasClass(el, className) {
+            let reg = new RegExp('(^|\\s)' + className + '(\\s|$)')
+            return reg.test(el.className)
+        };
+        //el添加某个class
+        addClass(el, className) {
+            if (this.hasClass(el, className)) {
+                return;
+            }
+            let newClass = el.className.split(' ')
+            newClass.push(className)
+            el.className = newClass.join(' ')
+        };
+        //el去除某个class
+        removeClass(el, className) {
+            if (!this.hasClass(el, className)) {
+                return
+            }
+            let reg = new RegExp('(^|\\s)' + className + '(\\s|$)', 'g')
+            el.className = el.className.replace(reg, ' ')
+        }
+        //滚动到顶部
+        scrollToTop() {
+            const c = document.documentElement.scrollTop || document.body.scrollTop;
+            // if (c > 0) {
+            //     // window.requestAnimationFrame(scrollToTop);
+            //     window.scrollTo(0, c - c / 8);
+            // }
+            console.log(c)
+            if (c > 0) {
+                document.scrollingElement.scrollTop = 0
+            }
+        }
+    }
+    let test1 = new usualTools();
+    console.log(test1.isEmail('448530083@qq.com'))
+    let oDiv = document.querySelector('.appTest');
+    console.log(oDiv);
+
+    console.log(test1.removeClass(oDiv, 'xxx'));
+    let backTopDiv = document.querySelector('#backTop');
+    backTopDiv.onclick = () => {
+        test1.scrollToTop()
+    }
+
+    // $(function () {
+    //     $(window).scroll(function () {
+    //         if ($(window).scrollTop() >= 100) {
+    //             $('.actGotop').fadeIn(300);
+    //         } else {
+    //             $('.actGotop').fadeOut(300);
+    //         }
+    //     });
+    //     $('.actGotop').click(function () {
+    //         $('html,body').animate({
+    //             scrollTop: '0px'
+    //         }, 800);
+    //     });
+    // });
+</script>
+
+</html>

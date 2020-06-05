@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script src="js/jquery_1_8_3.js"></script>
+<script>
+    Promise.all([
+        $.ajax({url:'1.txt',dataType:'json'}),
+        $.ajax({url:'2.txt'}),
+        $.ajax({url:'3.txt',dataType:'json'})
+    ]).then(arr=>{
+        console.log(arr)
+    },err=>{
+        alert('失败')
+    })
+</script>
+</html>

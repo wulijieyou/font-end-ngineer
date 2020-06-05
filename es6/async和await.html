@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script src="js/jquery_1_8_3.js"></script>
+<script>
+    let show = async () => {
+        let data1 = await $.ajax({url:'1.txt',dataType:'json'});
+        
+        if(data1.a+data1.b>10){
+            let data2 = await $.ajax({url:'2.txt'});
+            console.log(data2)
+        }else {
+            let data3 = await $.ajax({url:'3.txt',dataType:'json'});
+            console.log(data3.item)
+        }
+    }
+    show()
+    
+</script>
+</html>
